@@ -1,0 +1,82 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  font-size: 16px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background-color: #EFDFCC;
+}
+
+body {
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+button {
+  border: 2px solid #BA8E7A;
+  background-color: transparent;
+  padding: 10px 20px;
+  border-radius: 20px;
+}
+
+main {
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.card {
+  width: 160px;
+  height: 150px;
+  padding: 10px;
+  border-radius: 10px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  grid-template-areas: 
+    "title title"
+    "author author"
+    ". ."
+    "pages status"  
+  ;
+  gap: 5px;
+}
+
+.card .title {
+  grid-area: title;
+  text-align: center;
+}
+
+.card .author {
+  grid-area: author;
+  text-align: left;
+}
+
+.card .pages {
+  grid-area: pages;
+  align-self: end;
+  text-align: left;
+}
+
+.card .status {
+  grid-area: status;
+  align-self: end;
+  text-align: right;
+  font-style: italic;
+}
+
+.fiction {
+  background-color: #BA8E7A;
+}
+
+.nonfiction {
+  background-color: #66796B;
+}
