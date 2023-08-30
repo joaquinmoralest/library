@@ -11,7 +11,7 @@
   <button id="add-button">New book</button>
   <dialog id="add-book">
     <h2 class="modal-title">Add a new book</h2>
-    <form>
+    <form method="dialog">
       <label>Title
         <input id="input-title" type="text" required>
       </label>
@@ -40,8 +40,8 @@
         </label>
       </fieldset>
       <div class="controls">
-        <button value="cancel" formmethod="dialog">Cancel</button>
-        <button id="saveButton">Save</button>
+        <button type="button" id="cancelButton">Cancel</button>
+        <button type="submit" id="saveButton">Save</button>
       </div>
     </form>
   </dialog>

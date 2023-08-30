@@ -9,6 +9,7 @@ const inputRead = document.querySelector('#radio-read')
 const inputFiction = document.querySelector('#radio-fiction')
 const inputNonFiction = document.querySelector('#radio-nonfiction')
 const saveButton = document.querySelector('#saveButton')
+const cancelButton = document.querySelector('#cancelButton')
 const form = document.querySelector('form')
 let titleValue = ''
 let authorValue = ''
@@ -33,6 +34,16 @@ saveButton.addEventListener('click', (e) => {
 
   dialog.close()
   isEditing = false
+})
+
+cancelButton.addEventListener('click', () => {
+  if (isEditing) {
+    deleteBook(index)
+    resetValues()
+    dialog.close()
+  } else {
+    dialog.close()
+  }
 })
 
 inputTitle.addEventListener('change', () => {
@@ -63,7 +74,7 @@ inputRead.addEventListener('change', () => {
   categoryValue = 'nonfiction'
 })
 
-const myLibrary = [
+let myLibrary = [
   {
     title: 'The Hobbit',
     author: 'J.R.R. Tolkien',
@@ -120,6 +131,12 @@ function saveChanges(indexBook) {
   myLibrary[indexBook].pages = pagesValue
   myLibrary[indexBook].isRead = isReadValue
   resetValues()
+  displayBooks()
+}
+
+function deleteBook(indexBook) {
+  const booksFiltered = myLibrary.filter((book, i) => i != indexBook)
+  myLibrary = booksFiltered
   displayBooks()
 }
 
