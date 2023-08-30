@@ -15,6 +15,8 @@ let authorValue = ''
 let pagesValue = 1
 let categoryValue = ''
 let isReadValue = false
+let isEditing = false
+let index = ''
 
 addButton.addEventListener('click', () => {
   dialog.showModal()
@@ -22,8 +24,15 @@ addButton.addEventListener('click', () => {
 
 saveButton.addEventListener('click', (e) => {
   e.preventDefault()
-  addBookToLibrary()
+
+  if (!isEditing) {
+    addBookToLibrary()
+  } else {
+    saveChanges(index)
+  }
+
   dialog.close()
+  isEditing = false
 })
 
 inputTitle.addEventListener('change', () => {
@@ -89,7 +98,27 @@ function Book(title, author, category, pages, isRead) {
 function addBookToLibrary() {
   const newBook = new Book(titleValue, authorValue, categoryValue, pagesValue, isReadValue)
   myLibrary.push(newBook)
-  console.log(newBook)
+  resetValues()
+  displayBooks()
+}
+
+function editBook() {
+  dialog.showModal()
+  titleValue = myLibrary[index].title
+  authorValue = myLibrary[index].author
+  pagesValue = myLibrary[index].pages
+  inputTitle.value = myLibrary[index].title
+  inputAuthor.value = myLibrary[index].author
+  inputPages.value = myLibrary[index].pages
+
+}
+
+function saveChanges(indexBook) {
+  myLibrary[indexBook].title = titleValue
+  myLibrary[indexBook].author = authorValue
+  myLibrary[indexBook].category = categoryValue
+  myLibrary[indexBook].pages = pagesValue
+  myLibrary[indexBook].isRead = isReadValue
   resetValues()
   displayBooks()
 }
@@ -100,15 +129,17 @@ function resetValues() {
   categoryValue = ''
   pagesValue = 1
   isReadValue = false
+  index = ''
   form.reset()
 }
 
 function displayBooks() {
   library.innerHTML = ''
-  myLibrary.forEach(book => {
+  myLibrary.forEach((book, index) => {
     const card = document.createElement('div')
     card.classList.add('card')
     card.classList.add(book.category === 'fiction' ? 'fiction' : 'nonfiction')
+    card.setAttribute('data-index', index)
     const title = document.createElement('h3')
     title.classList.add('title')
     title.textContent = book.title
@@ -127,6 +158,20 @@ function displayBooks() {
     card.appendChild(pages)
     card.appendChild(status)
     library.appendChild(card)
+
+    addEvents()
+  })
+}
+
+function addEvents() {
+  const cards = document.querySelectorAll('.card')
+
+  cards.forEach(card => {
+    card.addEventListener('click', () => {
+      isEditing = true
+      index = card.getAttribute('data-index')
+      editBook()
+    })
   })
 }
 

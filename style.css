@@ -97,7 +97,7 @@ main {
 
 .card {
   width: 160px;
-  height: 150px;
+  height: 160px;
   padding: 10px;
   border-radius: 10px;
   display: grid;
@@ -110,6 +110,7 @@ main {
     "pages status"  
   ;
   gap: 5px;
+  cursor: pointer;
 }
 
 .card .title {
@@ -126,6 +127,7 @@ main {
   grid-area: pages;
   align-self: end;
   text-align: left;
+  font-weight: 700;
 }
 
 .card .status {
