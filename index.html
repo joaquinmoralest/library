@@ -10,12 +10,41 @@
   <h1>My Library</h1>
   <button id="add-button">New book</button>
   <dialog id="add-book">
-    <h2>Add a new book</h2>
-    <form action="#">
-      <input type="text">
+    <h2 class="modal-title">Add a new book</h2>
+    <form>
+      <label>Title
+        <input id="input-title" type="text">
+      </label>
+      <label>Author
+        <input id="input-author" type="text">
+      </label>
+      <label>Pages
+        <input id="input-pages" type="number" min="1" max="2000">
+      </label>
+      <fieldset>
+        <h3>Status</h3>
+        <label>
+          <input id="radio-to-read" name="status" value="to-read" type="radio">To read
+        </label>
+        <label>
+          <input id="radio-read" name="status" value="read" type="radio">Read
+        </label>
+      </fieldset>
+      <fieldset>
+        <h3>Category</h3>
+        <label>
+          <input id="radio-fiction" name="category" value="to-read" type="radio">Fiction
+        </label>
+        <label>
+          <input id="radio-nonfiction" name="category" value="read" type="radio">Non Fiction
+        </label>
+      </fieldset>
+      <div class="controls">
+        <button value="cancel" formmethod="dialog">Cancel</button>
+        <button id="saveButton">Save</button>
+      </div>
     </form>
   </dialog>
-  <output></output>
   <main id="library" class="library"></main>
   <script src="./script.js"></script>
 </body>
