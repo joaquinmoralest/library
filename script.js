@@ -18,6 +18,29 @@ let categoryValue = ''
 let isReadValue = false
 let isEditing = false
 let index = ''
+let myLibrary = [
+  {
+    title: 'The Hobbit',
+    author: 'J.R.R. Tolkien',
+    category: 'fiction',
+    pages: 295,
+    isRead: false
+  },
+  {
+    title: 'Ready Player One',
+    author: 'Ernest Cline',
+    category: 'fiction',
+    pages: 480,
+    isRead: true
+  },
+  {
+    title: 'Habitos Atomicos',
+    author: 'James Clear',
+    category: 'nonfiction',
+    pages: 336,
+    isRead: true
+  },
+]
 
 addButton.addEventListener('click', () => {
   dialog.showModal()
@@ -74,30 +97,6 @@ inputRead.addEventListener('change', () => {
   categoryValue = 'nonfiction'
 })
 
-let myLibrary = [
-  {
-    title: 'The Hobbit',
-    author: 'J.R.R. Tolkien',
-    category: 'fiction',
-    pages: 295,
-    isRead: false
-  },
-  {
-    title: 'Ready Player One',
-    author: 'Ernest Cline',
-    category: 'fiction',
-    pages: 480,
-    isRead: true
-  },
-  {
-    title: 'Habitos Atomicos',
-    author: 'James Clear',
-    category: 'nonfiction',
-    pages: 336,
-    isRead: true
-  },
-]
-
 function Book(title, author, category, pages, isRead) {
   this.title = title
   this.author = author
@@ -137,6 +136,7 @@ function saveChanges(indexBook) {
 function deleteBook(indexBook) {
   const booksFiltered = myLibrary.filter((book, i) => i != indexBook)
   myLibrary = booksFiltered
+  resetValues()
   displayBooks()
 }
 
@@ -147,6 +147,7 @@ function resetValues() {
   pagesValue = 1
   isReadValue = false
   index = ''
+  isEditing = false
   form.reset()
 }
 

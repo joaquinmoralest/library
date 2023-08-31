@@ -58,6 +58,10 @@ dialog {
   border-radius: 10px;
 }
 
+dialog h2 {
+  text-align: center;
+}
+
 dialog::backdrop {
   background-color: rgba(0, 0, 0, .3);
 }
