@@ -18,29 +18,7 @@ let categoryValue = ''
 let isReadValue = false
 let isEditing = false
 let index = ''
-let myLibrary = [
-  {
-    title: 'The Hobbit',
-    author: 'J.R.R. Tolkien',
-    category: 'fiction',
-    pages: 295,
-    isRead: false
-  },
-  {
-    title: 'Ready Player One',
-    author: 'Ernest Cline',
-    category: 'fiction',
-    pages: 480,
-    isRead: true
-  },
-  {
-    title: 'Habitos Atomicos',
-    author: 'James Clear',
-    category: 'nonfiction',
-    pages: 336,
-    isRead: true
-  },
-]
+let myLibrary = []
 
 addButton.addEventListener('click', () => {
   dialog.showModal()
@@ -195,4 +173,4 @@ function addEvents() {
   })
 }
 
-displayBooks()
+!library.innerHTML ? displayBooks() : null
