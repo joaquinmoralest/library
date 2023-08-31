@@ -44,6 +44,7 @@ let myLibrary = [
 
 addButton.addEventListener('click', () => {
   dialog.showModal()
+  cancelButton.textContent = 'Cancel'
 })
 
 saveButton.addEventListener('click', (e) => {
@@ -114,6 +115,7 @@ function addBookToLibrary() {
 
 function editBook() {
   dialog.showModal()
+  cancelButton.textContent = 'Delete'
   titleValue = myLibrary[index].title
   authorValue = myLibrary[index].author
   pagesValue = myLibrary[index].pages
